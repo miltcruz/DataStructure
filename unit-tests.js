@@ -18,6 +18,7 @@ Run the code in VS Code Terminal, and verify that all console.assert checks pass
 
 import Stack from "./stack.js";
 import Queue from "./queue.js";
+import LinkedList from "./linked-list.js";
 
 // Stack tests
 const stack = new Stack();
@@ -87,3 +88,40 @@ console.log("Summary:");
 console.log("Stack operations push, pop, peek, size, and isEmpty are expected to be O(1).");
 console.log("Queue operations enqueue, dequeue, front, size, isEmpty, and isFull are expected to be O(1).");
 console.log("The ring buffer avoids the cost of shift and unshift by using circular indexing to manage the head and tail positions without needing to move elements in the array.");
+
+
+/*
+Using JavaScript, measure the time it takes to insert and delete elements at the front of a Singly Linked List.
+Measure the same front insert and delete operations using a JavaScript array. */
+
+/*
+Implement the following methods in your SinglyLinkedList class*/
+
+let list = new LinkedList();
+list.append(1);
+list.append(2);
+list.append(3);
+console.log("Linked List.", list);
+console.assert(list.size === 3, "List size should be 3");
+console.assert(list.find(2).value === 2, "Find should return node with value 2");
+list.insertAt(1, 4);
+console.assert(list.find(4).value === 4, "Find should return node with value 4");
+list.removeAt(1);
+console.assert(list.find(4) === null, "Node with value 4 should be removed");
+
+/* Measure time for front insert and delete on Singly Linked List*/
+console.time("LinkedList prepend");
+list.prepend(0);
+console.timeEnd("LinkedList prepend");
+console.time("LinkedList removeAt(0)");
+list.removeAt(0);
+console.timeEnd("LinkedList removeAt(0)");
+
+/ * Measure time for front insert and delete on Array */
+const array = [];
+console.time("Array unshift");  
+array.unshift(0);
+console.timeEnd("Array unshift");
+console.time("Array shift");
+array.shift();
+console.timeEnd("Array shift");

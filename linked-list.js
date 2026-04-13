@@ -67,28 +67,31 @@ class SinglyLinkedList {
             throw new Error('Index out of bounds');
         }
         if (index === 0) {
-            this.head = this.head.next;
+            this.head = this.head.next; // this.head = { value: value, next: null }
         }   else {
-            let current = this.head;
+            let current = this.head; // current = { value: value, next: { value: value, next: null } }
             let previous = null;
             let currentIndex = 0;   
             while (currentIndex < index) {
                 previous = current;
-                current = current.next;
+                current = current.next; // current = { value: value, next: { value: value, next: null } }
                 currentIndex++;
             }
-            previous.next = current.next;
+            previous.next = current.next; // previous.next = { value: value, next: null }
         }
         this.size--;
     }   
     find(predicate) {
-        let current = this.head;
+        let current = this.head; //this.head = { value: value, next: null }
         while (current) {
             if (typeof predicate === 'function' ? predicate(current.value) : current.value === predicate) {
                 return current;
             }
+            // current == current.next = { value: value, next: null }
             current = current.next;
         }
         return null;
     }
 }
+
+export default SinglyLinkedList;
