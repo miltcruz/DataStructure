@@ -19,6 +19,7 @@ Run the code in VS Code Terminal, and verify that all console.assert checks pass
 import Stack from "./stack.js";
 import Queue from "./queue.js";
 import LinkedList from "./linked-list.js";
+import DoublyLinkedList from "./doubly-linked-list.js";
 
 // Stack tests
 const stack = new Stack();
@@ -125,3 +126,12 @@ console.timeEnd("Array unshift");
 console.time("Array shift");
 array.shift();
 console.timeEnd("Array shift");
+
+/* Doubly Linked List insertAt method implementation */
+let doubly = new DoublyLinkedList();
+doubly.append(1);
+doubly.append(2);
+doubly.append(3);
+console.log("Doubly Linked List.", doubly);
+//console.assert(doubly.length === 3, "Doubly Linked List size should be 3");
+doubly.insertAt(1, 4);
